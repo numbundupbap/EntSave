@@ -3,6 +3,68 @@
 const savecolor = '#00CC66';
 const getcolor = '#373737';
 
+export const keyInputList = [
+    [Lang.Blocks.START_press_some_key_back_space, '8'],
+    ['Tab', '9'],
+    [Lang.Blocks.START_press_some_key_enter, '13'],
+    ['Shift', '16'],
+    ['Ctrl', '17'],
+    ['Alt', '18'],
+    ['Esc', '27'],
+    [Lang.Blocks.START_press_some_key_space, '32'],
+    [Lang.Blocks.START_press_some_key_left, '37'],
+    [Lang.Blocks.START_press_some_key_up, '38'],
+    [Lang.Blocks.START_press_some_key_right, '39'],
+    [Lang.Blocks.START_press_some_key_down, '40'],
+    ['0', '48'],
+    ['1', '49'],
+    ['2', '50'],
+    ['3', '51'],
+    ['4', '52'],
+    ['5', '53'],
+    ['6', '54'],
+    ['7', '55'],
+    ['8', '56'],
+    ['9', '57'],
+    ['a', '65'],
+    ['b', '66'],
+    ['c', '67'],
+    ['d', '68'],
+    ['e', '69'],
+    ['f', '70'],
+    ['g', '71'],
+    ['h', '72'],
+    ['i', '73'],
+    ['j', '74'],
+    ['k', '75'],
+    ['l', '76'],
+    ['m', '77'],
+    ['n', '78'],
+    ['o', '79'],
+    ['p', '80'],
+    ['q', '81'],
+    ['r', '82'],
+    ['s', '83'],
+    ['t', '84'],
+    ['u', '85'],
+    ['v', '86'],
+    ['w', '87'],
+    ['x', '88'],
+    ['y', '89'],
+    ['z', '90'],
+    [';', '186'],
+    ['=', '187'],
+    [',', '188'],
+    ['-', '189'],
+    ['.', '190'],
+    ['/', '191'],
+    ['~', '192'],
+    ['[', '219'],
+    [Lang.Blocks.START_press_some_key_back_slash, '220'],
+    [']', '221'],
+    ["'", '222'],
+];
+
 const blocks = [
     {
         name: 'text_introduce',
@@ -112,6 +174,36 @@ const blocks = [
         localStorage.removeItem(Entry.projectId+keydd);
       }
     },
+    {
+        name: 'is_press_some_keyasdfasdf', 
+        color: EntryStatic.colorSet.block.default.JUDGE,
+        outerLine: EntryStatic.colorSet.block.darken.JUDGE,
+        skeleton: "basic_boolean_field",
+        statements: [],
+        params: [{
+            type: "Keyboard",
+            options: keyInputList,
+            value: "next",
+            fontSize: 10,
+            bgColor: EntryStatic.colorSet.block.darken.JUDGE,
+            arrowColor: EntryStatic.colorSet.arrow.default.DEFAULT
+        }, {
+            type: "Text",
+            text: Lang.Blocks.JUDGEMENT_is_press_some_key_2,
+            color: "#FFF"
+        }],
+        events: {},
+        def: [],
+        paramsKeyMap: {
+            VALUE: 0
+        },
+        class: "boolean_input",
+        isNotFor: [],
+        func: function(e, t) {
+            var o = Number(t.getField("VALUE", t));
+            return Entry.pressedKeys.indexOf(o) >= 0
+        }
+    }
 
     //배열 카테고리
     {
