@@ -201,6 +201,7 @@ const blocks = [
         isNotFor: [],
         func: function(e, t) {
             var o = Number(t.getField("VALUE", t));
+            console.log(o);
             return Entry.pressedKeys.indexOf(o) >= 0
         }
     }
